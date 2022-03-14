@@ -35,9 +35,32 @@ SEARCHBTN.addEventListener("click",getPersonByPhone)
 function getPersonByPhone() {
     let phone = document.querySelector("#phoneNumber").value;
     personsFacade.getPersonByPhone(phone).then(person => {
-        document.querySelector("#fName").innerText = `${person.fName}`;
-        document.querySelector("#lName").innerText = `${person.lName}`;
-        document.querySelector("#email").innerText = `${person.email}`;
+        document.querySelector("#fName").value = `${person.fName}`;
+        document.querySelector("#lName").value = `${person.lName}`;
+        document.querySelector("#email").value = `${person.email}`;
+        document.querySelector("#street").value = `${person.address.street}`;
+        document.querySelector("#houseNr").value = `${person.address.info}`;
+        document.querySelector("#zip").value = `${person.address.cityInfo.zip}`;
+        document.querySelector("#city").value = `${person.address.cityInfo.city}`;
+        let phoneRows = person.phones.map(phone =>{
+            return `
+        <tr>
+            <td>${phone.nr}</td>
+            <td>${phone.desc}</td>
+        </tr>
+            `
+        })
+            document.querySelector("#phones").innerHTML = phoneRows.join("");
+
+        let hobbyRows = person.hobbies.map(hobby =>{
+            return `
+            <tr>
+                <td>${hobby.name}</td>
+                <td>${hobby.desc}</td>
+            </tr>
+            `
+        });
+        document.querySelector("#hobby").innerHTML = hobbyRows.join("");
     });
 }
 
