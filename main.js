@@ -14,6 +14,24 @@ let cities = citiesFacade.getCities().then(cities => {
     document.querySelector("#citiesTable").innerHTML = cityRows.join("");
 });
 
+const SEARCHZIPBTN = document.querySelector("#searchZipBTN")
+SEARCHZIPBTN.addEventListener("click",getPersonsByZip)
+
+function getPersonsByZip() {
+    let zip = document.querySelector("#zipInput").value
+
+    citiesFacade.getPersonsByZip(zip).then(persons => {
+        const personRows = persons.map(person => `
+<tr>
+    <td>${person.fName}</td>
+    <td>${person.lName}</td>
+    <td>${person.email}</td>
+</tr>`);
+
+        document.querySelector("#personsZipTable").innerHTML = personRows.join("");
+    });
+}
+
 
 //JS for persons
 let persons = personsFacade.getPersons().then(persons => {

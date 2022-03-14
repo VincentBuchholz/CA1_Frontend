@@ -71,25 +71,41 @@
 
 
     <!--  Cities page start -->
-    <div class="row">
+    <div id="citiesPage" style="display:none;">
+        <div class="row">
 
-        <div class="col">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Zip code" id="zipInput">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="searchZipBTN">Search</button>
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">First name</th>
+                        <th scope="col">Last name</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                    </thead>
+                    <tbody id="personsZipTable">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">Zip code</th>
+                        <th scope="col">City</th>
+                    </tr>
+                    </thead>
+                    <tbody id="citiesTable">
 
-        </div>
-
-        <div id="citiesPage" style="display:none;" class="col">
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">Zipcode</th>
-                    <th scope="col">City</th>
-                </tr>
-                </thead>
-                <tbody id="citiesTable">
-
-                </tbody>
-            </table>
-
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -213,7 +229,6 @@
 
     </div>
     <!--  Hobbies page end!!-->
-
 
 
 </div>

@@ -7,6 +7,11 @@ function getCities() {
         .then(res => res.json())
 }
 
+function getPersonsByZip(zip) {
+    return fetch(URL+"zip/"+zip)
+        .then(handleHttpErrors)
+}
+
 function makeOptions(method, body) {
     var opts =  {
         method: method,
@@ -30,7 +35,8 @@ function handleHttpErrors(res){
 }
 
 const citiesFacade ={
-    getCities
+    getCities,
+    getPersonsByZip
 }
 
 export default citiesFacade;
