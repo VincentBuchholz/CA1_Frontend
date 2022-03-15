@@ -114,7 +114,84 @@
 
     <!--  Persons page start -->
     <div id="personsPage" style="display:none;">
-        <table class="table table-striped">
+        <div class="shadow-lg p-3 mb-5 bg-body rounded mt-5">
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Create
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Create</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Personal information*</h4>
+                            <div class="form-outline mb-3">
+                            <input type="text" class="form-control" id="createfName" placeholder="First name">
+                            </div>
+
+                            <div class="form-outline mb-3">
+                            <input type="text" class="form-control" id="createlName" placeholder="Last name">
+                            </div>
+
+                            <div class="form-outline mb-3">
+                            <input type="text" class="form-control" id="createEmail" placeholder="Email">
+                            </div>
+
+                            <div class="row mb-4">
+                                <h4>Address*</h4>
+                                <div class="col">
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="createStreet" placeholder="Street" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="createHouseNr" placeholder="Nr" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-outline mb-3">
+                                    <select class="form-select" id="selectZip">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <h4>Phone*</h4>
+                                <div class="col">
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="createPhoneNr" placeholder="Number" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="createPhoneDesc" placeholder="Description" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h4>Hobby</h4>
+                            <div class="form-outline mb-3">
+                                <select class="form-select" id="selectHobby">
+                                </select>
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="createPersonBTN">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-center pb-5">List of persons</h3>
+        <table class="table table-striped ">
             <thead>
             <tr>
                 <th scope="col">First name</th>
@@ -125,7 +202,7 @@
             <tbody id="personsTable">
             </tbody>
         </table>
-
+        </div>
     </div>
     <!--  persons page end!!-->
 

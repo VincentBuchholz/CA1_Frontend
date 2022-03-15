@@ -2,20 +2,9 @@
 const URL = "https://vincehub.dk/tomcat/ca1/api/person/"
 
 
-function getPersons() {
-    return fetch(URL+"all")
+function getHobbies() {
+    return fetch(URL+"hobby/all")
         .then(res => res.json())
-}
-
-function getPersonByPhone(phone) {
-    return fetch(URL+"phone/"+phone)
-        .then(handleHttpErrors)
-}
-
-function createPerson(person){
-    const options = makeOptions("POST",person)
-    return fetch(URL,options)
-        .then(handleHttpErrors)
 }
 
 
@@ -41,10 +30,8 @@ function handleHttpErrors(res){
     return res.json();
 }
 
-const personsFacade ={
-    getPersons,
-    getPersonByPhone,
-    createPerson
+const hobbiesFacade ={
+   getHobbies
 }
 
-export default personsFacade;
+export default hobbiesFacade;
