@@ -117,16 +117,16 @@
         <div class="shadow-lg p-3 mb-5 bg-body rounded mt-5">
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal" data-bs-target="#createPersonModal">
                 Create
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="createPersonModal" tabindex="-1" aria-labelledby="createPersonModal" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Create</h5>
+                            <h5 class="modal-title">Create</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -183,7 +183,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModalBTN">Close</button>
                             <button type="button" class="btn btn-primary" id="createPersonBTN">Save changes</button>
                         </div>
                     </div>
@@ -272,7 +272,61 @@
                     </div>
                 </div>
             </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal" data-bs-target="#editPersonModal">
+                Edit
+            </button>
         </form>
+
+            <!-- Modal -->
+            <div class="modal fade" id="editPersonModal" tabindex="-1" aria-labelledby="editPersonModal" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Edit Information</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h4>Personal information*</h4>
+                            <div class="form-outline mb-3">
+                                <input type="text" class="form-control" id="editfName" placeholder="First name">
+                            </div>
+
+                            <div class="form-outline mb-3">
+                                <input type="text" class="form-control" id="editlName" placeholder="Last name">
+                            </div>
+
+                            <div class="form-outline mb-3">
+                                <input type="text" class="form-control" id="editEmail" placeholder="Email">
+                            </div>
+
+                            <div class="row mb-4">
+                                <h4>Address*</h4>
+                                <div class="col">
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="editStreet" placeholder="Street" class="form-control"/>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-outline mb-4">
+                                        <input type="text" id="editHouseNr" placeholder="Nr" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-outline mb-3">
+                                    <select class="form-select" id="selectEditZip">
+                                    </select>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeEditPersonBTN">Close</button>
+                            <button type="button" class="btn btn-primary" id="editPersonBTN">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         <div class="row mb-4">
             <div class="col shadow-lg p-3 mb-5 bg-body rounded mt-5 me-5 ms-1">
@@ -288,6 +342,43 @@
                     </tbody>
                 </table>
 
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal" data-bs-target="#addPhoneModal">
+                    Add phone
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addPhoneModal" tabindex="-1" aria-labelledby="addPhoneModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add phone</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="row mb-4">
+                                    <div class="col">
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="addPhoneNr" placeholder="Number" class="form-control"/>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="addPhoneDesc" placeholder="Description" class="form-control" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeAddPhoneModalBTN">Close</button>
+                                <button type="button" class="btn btn-primary" id="addPhoneBTN">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="col shadow-lg p-3 mb-5 bg-body rounded mt-5 ms-5 me-1">
                 <h4 class="text-center">Hobbies</h4>
@@ -301,8 +392,36 @@
                     <tbody id="hobby">
                     </tbody>
                 </table>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal" data-bs-target="#addHobbyModal">
+                    Add Hobby
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="addHobbyModal" tabindex="-1" aria-labelledby="addHobbyModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Add Hobby</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-outline mb-3">
+                                    <select class="form-select" id="selectAddHobby">
+                                    </select>
+                                 </div>
+                                </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeAddHobbyModal">Close</button>
+                                <button type="button" class="btn btn-primary" id="addHobbyBTN">Save changes</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+
 
     </div>
     <!--  Hobbies page end!!-->

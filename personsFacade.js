@@ -18,6 +18,28 @@ function createPerson(person){
         .then(handleHttpErrors)
 }
 
+function addPhone(id,phone){
+    const options = makeOptions("POST",phone)
+    return fetch(URL+"addphone/"+id,options)
+        .then(handleHttpErrors)
+}
+
+function addHobby(personID,hobbyID){
+    const options = makeOptions("PUT")
+    return fetch(URL+"addhobby/"+personID +"/"+hobbyID,options)
+        .then(handleHttpErrors)
+}
+
+function editPerson(personID,person) {
+    const options = makeOptions("PUT",person)
+    return fetch(URL+"edit/"+personID,options)
+}
+
+function editAddress(personID,address) {
+    const options = makeOptions("PUT",address)
+    return fetch(URL+"editaddress/"+personID,options)
+}
+
 
 function makeOptions(method, body) {
     var opts =  {
@@ -41,10 +63,15 @@ function handleHttpErrors(res){
     return res.json();
 }
 
+
 const personsFacade ={
     getPersons,
     getPersonByPhone,
-    createPerson
+    createPerson,
+    addPhone,
+    addHobby,
+    editPerson,
+    editAddress
 }
 
 export default personsFacade;
