@@ -61,6 +61,9 @@ function getPersons() {
 const ADDPHONEBTN = document.querySelector("#addPhoneBTN");
 ADDPHONEBTN.addEventListener("click",addPhone);
 
+const PHONETABLE = document.querySelector("#phones")
+PHONETABLE.addEventListener("click",removePhone)
+
 function addPhone() {
     let userID = document.querySelector("#addPhoneBTN").value;
     let person = {
@@ -79,6 +82,18 @@ function addPhone() {
         }
     })
 }
+function removePhone(e){
+    const target = e.target;
+    let phoneID = target.value;
+    personsFacade.removePhone(phoneID).then(user => console.log(user)).catch(err => {
+        if (err.status) {
+            err.fullError.then(e => console.log(e.msg))
+        } else {
+            console.log("Network error");
+        }
+    })
+
+}
 
 const ADDHOBBYBTN = document.querySelector("#addHobbyBTN");
 ADDHOBBYBTN.addEventListener("click",addHobby);
@@ -87,6 +102,23 @@ function addHobby() {
     let userID = document.querySelector("#addPhoneBTN").value;
     let hobbyID = document.querySelector("#selectAddHobby").value;
     personsFacade.addHobby(userID,hobbyID).then(user => console.log(user)).catch(err => {
+        if (err.status) {
+            err.fullError.then(e => console.log(e.msg))
+        } else {
+            console.log("Network error");
+        }
+    })
+}
+
+const HOBBYTABLE = document.querySelector("#hobby")
+HOBBYTABLE.addEventListener("click",removeHobby)
+
+
+function removeHobby(e) {
+    const target = e.target;
+    let hobbyID = target.value;
+    let userID = document.querySelector("#addPhoneBTN").value;
+    personsFacade.removeHobby(userID,hobbyID).then(user => console.log(user)).catch(err => {
         if (err.status) {
             err.fullError.then(e => console.log(e.msg))
         } else {
@@ -180,6 +212,7 @@ function getPersonByPhone(phone) {
         <tr>
             <td>${phone.nr}</td>
             <td>${phone.desc}</td>
+            <td><button type="button" class="btn-danger rounded" value="${phone.id}">Remove</button></td>
         </tr>
             `
             })
@@ -218,8 +251,6 @@ function getPersonByPhone(phone) {
                 }
             }
 
-            console.log(person);
-            console.log(address)
 
             personsFacade.editPerson(personID,person).then(user => console.log(user)).catch(err => {
                 if (err.status) {
@@ -246,6 +277,7 @@ function getPersonByPhone(phone) {
             <tr>
                 <td>${hobby.name}</td>
                 <td>${hobby.desc}</td>
+                <td><button type="button" class="btn-danger rounded" value="${hobby.id}"> Remove</button></td>
             </tr>
             `
             });

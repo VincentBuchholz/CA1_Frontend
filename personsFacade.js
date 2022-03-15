@@ -40,6 +40,20 @@ function editAddress(personID,address) {
     return fetch(URL+"editaddress/"+personID,options)
 }
 
+function removeHobby(userID,hobbyID){
+    console.log("Userid: "+userID +" Hobbyid: "+ hobbyID)
+    const options = makeOptions("DELETE")
+    return fetch(URL+"removehobby/"+userID+"/"+hobbyID,options)
+        .then(handleHttpErrors)
+}
+
+function removePhone(phoneID){
+    const options = makeOptions("DELETE")
+    return fetch(URL+"deletephone/"+phoneID,options)
+        .then(handleHttpErrors)
+}
+
+
 
 function makeOptions(method, body) {
     var opts =  {
@@ -71,7 +85,9 @@ const personsFacade ={
     addPhone,
     addHobby,
     editPerson,
-    editAddress
+    editAddress,
+    removeHobby,
+    removePhone
 }
 
 export default personsFacade;
