@@ -69,7 +69,7 @@ function getPersons() {
     <td>${person.fName}</td>
     <td>${person.lName}</td>
     <td>${person.email}</td>
-    <td><button type="button" class="btn-primary rounded" value="${person.phones[0].nr}">Info</button></td>
+    <td><button type="button" class="btn-primary rounded float-end" value="${person.phones[0].nr}">Info</button></td>
 </tr>`);
 
         document.querySelector("#personsTable").innerHTML = personRows.join("");
@@ -257,7 +257,7 @@ function getPersonByPhone(phone) {
         <tr>
             <td>${phone.nr}</td>
             <td>${phone.desc}</td>
-            <td><button type="button" class="btn-danger rounded" value="${phone.id}">Remove</button></td>
+            <td><button type="button" class="btn-danger rounded float-end" value="${phone.id}">Remove</button></td>
         </tr>
             `
             })
@@ -326,7 +326,7 @@ function getPersonByPhone(phone) {
             <tr>
                 <td>${hobby.name}</td>
                 <td>${hobby.desc}</td>
-                <td><button type="button" class="btn-danger rounded" value="${hobby.id}"> Remove</button></td>
+                <td><button type="button" class="btn-danger rounded float-end" value="${hobby.id}"> Remove</button></td>
             </tr>
             `
             });
