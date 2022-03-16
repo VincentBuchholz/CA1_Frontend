@@ -101,21 +101,25 @@ function addPhone() {
     setTimeout(updatAfterEdit,300)
 }
 function removePhone(e){
-    if(document.querySelector("#phones").rows.length>1) {
-        const target = e.target;
-        let phoneID = target.value;
-        personsFacade.removePhone(phoneID).then(user => console.log(user)).catch(err => {
-            if (err.status) {
-                err.fullError.then(e => console.log(e.msg))
-            } else {
-                console.log("Network error");
-            }
-        })
-    }else{
-        document.querySelector("#removePhoneError").style = "display:block"
-        setTimeout(function (){document.querySelector("#removePhoneError").style = "display:none"},3000)
+    const target = e.target;
+    if (target.value) {
+        if (document.querySelector("#phones").rows.length > 1) {
+            let phoneID = target.value;
+            personsFacade.removePhone(phoneID).then(user => console.log(user)).catch(err => {
+                if (err.status) {
+                    err.fullError.then(e => console.log(e.msg))
+                } else {
+                    console.log("Network error");
+                }
+            })
+        } else {
+            document.querySelector("#removePhoneError").style = "display:block"
+            setTimeout(function () {
+                document.querySelector("#removePhoneError").style = "display:none"
+            }, 3000)
+        }
+        setTimeout(updatAfterEdit, 300)
     }
-    setTimeout(updatAfterEdit,300)
 }
 
 const ADDHOBBYBTN = document.querySelector("#addHobbyBTN");
@@ -366,7 +370,7 @@ getAllHobbies();
     function getAmountPerHobby() {
         let hobbyID = document.querySelector("#searchHobby").value;
         hobbiesFacade.getAmountOfPersons(hobbyID).then(amount =>{
-            document.querySelector("#searchHobbyAmount").value = amount.amount;
+            document.querySelector("#searchHobbyAmount").value = `Amount: ${amount.amount}`;
         })
     }
 
