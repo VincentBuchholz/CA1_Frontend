@@ -98,6 +98,7 @@ function addPhone() {
             console.log("Network error");
         }
     })
+    setTimeout(updatAfterEdit,300)
 }
 function removePhone(e){
     if(document.querySelector("#phones").rows.length>1) {
@@ -114,7 +115,7 @@ function removePhone(e){
         document.querySelector("#removePhoneError").style = "display:block"
         setTimeout(function (){document.querySelector("#removePhoneError").style = "display:none"},3000)
     }
-
+    setTimeout(updatAfterEdit,300)
 }
 
 const ADDHOBBYBTN = document.querySelector("#addHobbyBTN");
@@ -130,6 +131,7 @@ function addHobby() {
             console.log("Network error");
         }
     })
+    setTimeout(updatAfterEdit,300)
 }
 
 const HOBBYTABLE = document.querySelector("#hobby")
@@ -147,6 +149,7 @@ function removeHobby(e) {
             console.log("Network error");
         }
     })
+    setTimeout(updatAfterEdit,300)
 }
 
 
@@ -305,7 +308,11 @@ function getPersonByPhone(phone) {
                     console.log("Network error");
                 }
             })
+
+            setTimeout(updatAfterEdit,1000)
+
         }
+
 
 
             document.querySelector("#phones").innerHTML = phoneRows.join("");
@@ -322,6 +329,11 @@ function getPersonByPhone(phone) {
             document.querySelector("#hobby").innerHTML = hobbyRows.join("");
         });
     }
+
+function updatAfterEdit(){
+    let phone = document.querySelector("#phones").rows[0].cells[0].innerText
+    getPersonByPhone(phone);
+}
 
     //JS for hobbiespage
 
