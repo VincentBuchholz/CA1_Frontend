@@ -10,7 +10,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light" id="menu">
     <div class="container-fluid">
-        <a class="navbar-brand"  id="logo" href="#"><img src="logo.png" alt="Logo" width="42px" height="42px"></a>
+        <a class="navbar-brand" id="logo" href="#"><img src="logo.png" alt="Logo" width="42px" height="42px"></a>
         <button
                 class="navbar-toggler"
                 type="button"
@@ -74,23 +74,37 @@
         <div class="row">
 
             <div class="col">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Zip code" id="zipInput">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="searchZipBTN">Search</button>
+                <div class="shadow-lg p-3 mb-5 bg-body rounded mt-5">
+                    <h4 class="text-center">Search zip code</h4>
+
+                    <div class="row">
+                        <div class="col-9">
+                            <div class="form-outline mb-3">
+                                <input type="text" class="form-control" placeholder="Zip code" id="zipInput">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <button type="button" id="searchZipBTN" class="btn-primary rounded p-1 w-100">Search
+                            </button>
+                        </div>
+                        <div class="alert alert-danger" role="alert" id="searchZipError" style="display:none;">
+                        </div>
+                    </div>
+                    <div>
+                        <table class="table table-striped" id="searchZipTable" style="display:none;">
+                            <thead>
+                            <tr>
+                                <th scope="col">First name</th>
+                                <th scope="col">Last name</th>
+                                <th scope="col">Email</th>
+                            </tr>
+                            </thead>
+                            <tbody id="personsZipTable">
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        <th scope="col">First name</th>
-                        <th scope="col">Last name</th>
-                        <th scope="col">Email</th>
-                    </tr>
-                    </thead>
-                    <tbody id="personsZipTable">
-                    </tbody>
-                </table>
+
             </div>
             <div class="col">
                 <table class="table table-striped">
@@ -116,91 +130,120 @@
         <div class="shadow-lg p-3 mb-5 bg-body rounded mt-5">
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal" data-bs-target="#createPersonModal">
+            <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal"
+                    data-bs-target="#createPersonModal">
                 Create
             </button>
 
             <!-- Modal -->
-            <div class="modal fade" id="createPersonModal" tabindex="-1" aria-labelledby="createPersonModal" aria-hidden="true">
+            <div class="modal fade" id="createPersonModal" tabindex="-1" aria-labelledby="createPersonModal"
+                 aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Create</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h4>Personal information*</h4>
-                            <div class="form-outline mb-3">
-                            <input type="text" class="form-control" id="createfName" placeholder="First name">
+                        <form>
+                            <div class="modal-header">
+                                <h5 class="modal-title">Create</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                             </div>
+                            <div class="modal-body">
 
-                            <div class="form-outline mb-3">
-                            <input type="text" class="form-control" id="createlName" placeholder="Last name">
-                            </div>
-
-                            <div class="form-outline mb-3">
-                            <input type="text" class="form-control" id="createEmail" placeholder="Email">
-                            </div>
-
-                            <div class="row mb-4">
-                                <h4>Address*</h4>
-                                <div class="col">
-                                    <div class="form-outline mb-4">
-                                        <input type="text" id="createStreet" placeholder="Street" class="form-control"/>
-                                    </div>
+                                <div class="alert alert-success" id="createPersonSuccess" style="display: none;">
+                                    <strong>Success!</strong> Person have been created!
                                 </div>
-                                <div class="col">
-                                    <div class="form-outline mb-4">
-                                        <input type="text" id="createHouseNr" placeholder="Nr" class="form-control" />
-                                    </div>
+
+                                <div class="alert alert-danger" id="createPersonError" style="display: none">
+                                    <strong>ERROR!</strong> THERE WAS AN ERROR
                                 </div>
+
+
+                                <h4>Personal information*</h4>
                                 <div class="form-outline mb-3">
-                                    <select class="form-select" id="selectZip">
+                                    <input type="text" class="form-control" id="createfName" placeholder="First name"
+                                           required>
+                                </div>
+
+                                <div class="form-outline mb-3">
+                                    <input type="text" class="form-control" id="createlName" placeholder="Last name"
+                                           required>
+                                </div>
+
+                                <div class="form-outline mb-3">
+                                    <input type="text" class="form-control" id="createEmail" placeholder="Email"
+                                           required>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <h4>Address*</h4>
+                                    <div class="col">
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="createStreet" placeholder="Street"
+                                                   class="form-control" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="createHouseNr" placeholder="Nr" class="form-control"
+                                                   required/>
+                                        </div>
+                                    </div>
+                                    <div class="form-outline mb-3">
+                                        <select class="form-select" id="selectZip" required>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <h4>Phone*</h4>
+                                    <div class="col">
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="createPhoneNr" placeholder="Number"
+                                                   class="form-control" required/>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-outline mb-4">
+                                            <input type="text" id="createPhoneDesc" placeholder="Description"
+                                                   class="form-control" required/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h4>Hobby</h4>
+                                <div class="form-outline mb-3">
+                                    <select class="form-select" id="selectHobby">
                                     </select>
                                 </div>
+
+
                             </div>
 
-                            <div class="row mb-4">
-                                <h4>Phone*</h4>
-                                <div class="col">
-                                    <div class="form-outline mb-4">
-                                        <input type="text" id="createPhoneNr" placeholder="Number" class="form-control"/>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-outline mb-4">
-                                        <input type="text" id="createPhoneDesc" placeholder="Description" class="form-control" />
-                                    </div>
-                                </div>
-                            </div>
 
-                            <h4>Hobby</h4>
-                            <div class="form-outline mb-3">
-                                <select class="form-select" id="selectHobby">
-                                </select>
-                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                        id="closeModalBTN">Close
+                                </button>
+                                <button type="submit" class="btn btn-primary" id="createPersonBTN">Save changes
+                                </button>
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeModalBTN">Close</button>
-                            <button type="button" class="btn btn-primary" id="createPersonBTN">Save changes</button>
-                        </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
 
             <h3 class="text-center pb-5">List of persons</h3>
-        <table class="table table-striped ">
-            <thead>
-            <tr>
-                <th scope="col">First name</th>
-                <th scope="col">Last name</th>
-                <th scope="col">Email</th>
-            </tr>
-            </thead>
-            <tbody id="personsTable">
-            </tbody>
-        </table>
+            <table class="table table-striped ">
+                <thead>
+                <tr>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Email</th>
+                </tr>
+                </thead>
+                <tbody id="personsTable">
+                </tbody>
+            </table>
         </div>
     </div>
     <!--  persons page end!!-->
@@ -208,7 +251,7 @@
     <!--  Hobbies page start -->
     <div id="hobbiesPage" style="display:none;">
         <div class="row">
-            <div class="col">
+            <div class="col ">
                 <div class="shadow-lg p-3 mb-5 bg-body rounded mt-5">
                     <h4 class="text-center">Search hobby</h4>
 
@@ -220,11 +263,13 @@
                             </div>
                         </div>
                         <div class="col-3">
-                            <button type="button" id="searchHobbyBTN" class="btn-primary rounded p-1 w-100">Search</button>
+                            <button type="button" id="searchHobbyBTN" class="btn-primary rounded p-1 w-100">Search
+                            </button>
                         </div>
                     </div>
                     <div class="text-center">
-                        <input type="text" placeholder="Amount of members" class="w-50 text-center" id="searchHobbyAmount" disabled>
+                        <input type="text" placeholder="Amount of members" class="w-50 text-center"
+                               id="searchHobbyAmount" disabled>
                     </div>
                 </div>
 
@@ -305,60 +350,63 @@
                 </div>
             </div>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal" data-bs-target="#editPersonModal">
+            <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal"
+                    data-bs-target="#editPersonModal">
                 Edit
             </button>
         </form>
 
-            <!-- Modal -->
-            <div class="modal fade" id="editPersonModal" tabindex="-1" aria-labelledby="editPersonModal" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Edit Information</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <!-- Modal -->
+        <div class="modal fade" id="editPersonModal" tabindex="-1" aria-labelledby="editPersonModal" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Information</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Personal information*</h4>
+                        <div class="form-outline mb-3">
+                            <input type="text" class="form-control" id="editfName" placeholder="First name">
                         </div>
-                        <div class="modal-body">
-                            <h4>Personal information*</h4>
-                            <div class="form-outline mb-3">
-                                <input type="text" class="form-control" id="editfName" placeholder="First name">
-                            </div>
 
-                            <div class="form-outline mb-3">
-                                <input type="text" class="form-control" id="editlName" placeholder="Last name">
-                            </div>
+                        <div class="form-outline mb-3">
+                            <input type="text" class="form-control" id="editlName" placeholder="Last name">
+                        </div>
 
-                            <div class="form-outline mb-3">
-                                <input type="text" class="form-control" id="editEmail" placeholder="Email">
-                            </div>
+                        <div class="form-outline mb-3">
+                            <input type="text" class="form-control" id="editEmail" placeholder="Email">
+                        </div>
 
-                            <div class="row mb-4">
-                                <h4>Address*</h4>
-                                <div class="col">
-                                    <div class="form-outline mb-4">
-                                        <input type="text" id="editStreet" placeholder="Street" class="form-control"/>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="form-outline mb-4">
-                                        <input type="text" id="editHouseNr" placeholder="Nr" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-outline mb-3">
-                                    <select class="form-select" id="selectEditZip">
-                                    </select>
+                        <div class="row mb-4">
+                            <h4>Address*</h4>
+                            <div class="col">
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="editStreet" placeholder="Street" class="form-control"/>
                                 </div>
                             </div>
+                            <div class="col">
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="editHouseNr" placeholder="Nr" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-outline mb-3">
+                                <select class="form-select" id="selectEditZip">
+                                </select>
+                            </div>
+                        </div>
 
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeEditPersonBTN">Close</button>
-                            <button type="button" class="btn btn-primary" id="editPersonBTN">Save changes</button>
-                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeEditPersonBTN">
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary" id="editPersonBTN">Save changes</button>
                     </div>
                 </div>
             </div>
+        </div>
 
         <div class="row mb-4">
             <div class="col shadow-lg p-3 mb-5 bg-body rounded mt-5 me-5 ms-1">
@@ -374,37 +422,48 @@
                     </tbody>
                 </table>
 
+                <div class="alert alert-danger p-1" role="alert" id="removePhoneError" style="display:none;">
+                    <p class="m-0">You need at least one number</p>
+                </div>
+
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal" data-bs-target="#addPhoneModal">
+                <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal"
+                        data-bs-target="#addPhoneModal">
                     Add phone
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="addPhoneModal" tabindex="-1" aria-labelledby="addPhoneModal" aria-hidden="true">
+                <div class="modal fade" id="addPhoneModal" tabindex="-1" aria-labelledby="addPhoneModal"
+                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Add phone</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
 
                                 <div class="row mb-4">
                                     <div class="col">
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="addPhoneNr" placeholder="Number" class="form-control"/>
+                                            <input type="text" id="addPhoneNr" placeholder="Number"
+                                                   class="form-control"/>
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="addPhoneDesc" placeholder="Description" class="form-control" />
+                                            <input type="text" id="addPhoneDesc" placeholder="Description"
+                                                   class="form-control"/>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeAddPhoneModalBTN">Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                        id="closeAddPhoneModalBTN">Close
+                                </button>
                                 <button type="button" class="btn btn-primary" id="addPhoneBTN">Save changes</button>
                             </div>
                         </div>
@@ -425,34 +484,39 @@
                     </tbody>
                 </table>
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal" data-bs-target="#addHobbyModal">
+                <button type="button" class="btn btn-primary rounded float-end" data-bs-toggle="modal"
+                        data-bs-target="#addHobbyModal">
                     Add Hobby
                 </button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="addHobbyModal" tabindex="-1" aria-labelledby="addHobbyModal" aria-hidden="true">
+                <div class="modal fade" id="addHobbyModal" tabindex="-1" aria-labelledby="addHobbyModal"
+                     aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h5 class="modal-title">Add Hobby</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="form-outline mb-3">
                                     <select class="form-select" id="selectAddHobby">
                                     </select>
-                                 </div>
                                 </div>
+                            </div>
 
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeAddHobbyModal">Close</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                        id="closeAddHobbyModal">Close
+                                </button>
                                 <button type="button" class="btn btn-primary" id="addHobbyBTN">Save changes</button>
-                            </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
 
     </div>

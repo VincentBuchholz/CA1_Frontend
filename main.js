@@ -18,7 +18,11 @@ let cities = citiesFacade.getCities().then(cities => {
 const SEARCHZIPBTN = document.querySelector("#searchZipBTN")
 SEARCHZIPBTN.addEventListener("click", getPersonsByZip)
 
+const zipAlert = document.querySelector("#searchZipError");
+const searchZipTable = document.querySelector("#searchZipTable");
+
 function getPersonsByZip() {
+
     let zip = document.querySelector("#zipInput").value
 
     citiesFacade.getPersonsByZip(zip).then(persons => {
@@ -28,8 +32,18 @@ function getPersonsByZip() {
     <td>${person.lName}</td>
     <td>${person.email}</td>
 </tr>`);
-
+        searchZipTable.style = "display"
+        zipAlert.style = "display:none"
         document.querySelector("#personsZipTable").innerHTML = personRows.join("");
+    }).catch(err =>{
+        if(err.status){
+            err.fullError.then(e=> {
+                zipAlert.innerText = e.message;
+                zipAlert.style = "display:block"
+                searchZipTable.style = "display:none"
+            })
+        }
+        else{console.log("Network error"); }
     });
 }
 
@@ -41,11 +55,14 @@ document.querySelector("#personsTable").addEventListener("click",getPersonByPhon
 
 function getPersonByPhoneInfo(e){
         const target = e.target;
-        getPersonByPhone(target.value);
-        hideAllShowOne("searchPage");
+        if(target.value) {
+            getPersonByPhone(target.value);
+            hideAllShowOne("searchPage");
+        }
 }
 
 function getPersons() {
+    console.log("test get persons")
     personsFacade.getPersons().then(persons => {
         const personRows = persons.map(person => `
 <tr>
@@ -83,15 +100,20 @@ function addPhone() {
     })
 }
 function removePhone(e){
-    const target = e.target;
-    let phoneID = target.value;
-    personsFacade.removePhone(phoneID).then(user => console.log(user)).catch(err => {
-        if (err.status) {
-            err.fullError.then(e => console.log(e.msg))
-        } else {
-            console.log("Network error");
-        }
-    })
+    if(document.querySelector("#phones").rows.length>1) {
+        const target = e.target;
+        let phoneID = target.value;
+        personsFacade.removePhone(phoneID).then(user => console.log(user)).catch(err => {
+            if (err.status) {
+                err.fullError.then(e => console.log(e.msg))
+            } else {
+                console.log("Network error");
+            }
+        })
+    }else{
+        document.querySelector("#removePhoneError").style = "display:block"
+        setTimeout(function (){document.querySelector("#removePhoneError").style = "display:none"},3000)
+    }
 
 }
 
@@ -154,7 +176,8 @@ CREATEPERSONBTN.addEventListener("click", createPerson)
 const CLOSEMODALBTN = document.querySelector("#closeModalBTN");
 CLOSEMODALBTN.addEventListener("click",getPersons);
 
-function createPerson() {
+function createPerson(e) {
+    e.preventDefault()
     let person = {
         fName: document.querySelector("#createfName").value,
         lName: document.querySelector("#createlName").value,
@@ -181,11 +204,25 @@ function createPerson() {
     }
     personsFacade.createPerson(person).then(user => console.log(user)).catch(err => {
         if (err.status) {
-            err.fullError.then(e => console.log(e.msg))
+            err.fullError.then(e => console.log(e.message))
         } else {
             console.log("Network error");
         }
     })
+    const personSuccessAlert = document.querySelector("#createPersonSuccess");
+    personSuccessAlert.style="display";
+    document.querySelector("#createfName").value=null
+    document.querySelector("#createlName").value=null
+    document.querySelector("#createEmail").value=null
+    document.querySelector("#selectHobby").value=0
+    document.querySelector("#createPhoneNr").value=null
+    document.querySelector("#createPhoneDesc").value=null
+    document.querySelector("#createStreet").value=null
+    document.querySelector("#createHouseNr").value=null
+    document.querySelector("#selectZip").value=0
+
+    setTimeout(getPersons,1000)
+
 }
 
 //JS for Search
