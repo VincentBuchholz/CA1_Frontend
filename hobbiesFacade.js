@@ -7,6 +7,11 @@ function getHobbies() {
         .then(res => res.json())
 }
 
+function getAmountOfPersons(hobbyID){
+    return fetch(URL+"hobby/"+hobbyID)
+        .then(handleHttpErrors)
+}
+
 
 function makeOptions(method, body) {
     var opts =  {
@@ -31,7 +36,8 @@ function handleHttpErrors(res){
 }
 
 const hobbiesFacade ={
-   getHobbies
+   getHobbies,
+    getAmountOfPersons
 }
 
 export default hobbiesFacade;

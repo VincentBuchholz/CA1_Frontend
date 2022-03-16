@@ -145,6 +145,7 @@ hobbiesFacade.getHobbies().then(hobbies => {
     hobbyRows.unshift("<option selected value='0'>Choose hobby</option>")
     document.querySelector("#selectHobby").innerHTML = hobbyRows.join("");
     document.querySelector("#selectAddHobby").innerHTML = hobbyRows.join("");
+    document.querySelector("#searchHobby").innerHTML = hobbyRows.join("");
 });
 
 const CREATEPERSONBTN = document.querySelector("#createPersonBTN")
@@ -285,14 +286,59 @@ function getPersonByPhone(phone) {
         });
     }
 
+    //JS for hobbiespage
+
+getAllHobbies();
+
+    function getAllHobbies() {
+
+        hobbiesFacade.getHobbies().then(hobbies =>{
+            let hobbyRows = hobbies.map(hobby =>{
+
+
+
+
+                return `
+                <tr>
+                 <td>${hobby.name}</td>
+                 <td>${hobby.desc}</td>
+                </tr>
+                `
+            })
+
+
+            document.querySelector("#hobbiesTable").innerHTML = hobbyRows.join("");
+        })
+    }
+
+    const SEARCHHOBBYBNT = document.querySelector("#searchHobbyBTN");
+    SEARCHHOBBYBNT.addEventListener("click",getAmountPerHobby);
+
+    function getAmountPerHobby() {
+        let hobbyID = document.querySelector("#searchHobby").value;
+        hobbiesFacade.getAmountOfPersons(hobbyID).then(amount =>{
+            document.querySelector("#searchHobbyAmount").value = amount.amount;
+        })
+    }
+
+
+
+
+
+
+
+
+    //JS for navigation:
 
     function hideAllShowOne(idToShow) {
+    if(idToShow) {
         document.getElementById("startPage").style = "display:none"
         document.getElementById("citiesPage").style = "display:none"
         document.getElementById("personsPage").style = "display:none"
         document.getElementById("hobbiesPage").style = "display:none"
         document.getElementById("searchPage").style = "display:none"
         document.getElementById(idToShow).style = "display:block"
+    }
     }
 
     function menuItemClicked(evt) {
@@ -310,8 +356,14 @@ function getPersonByPhone(phone) {
             case "searchBTN":
                 hideAllShowOne("searchPage");
                 break
-            default:
+            case "home":
                 hideAllShowOne("startPage");
+                break;
+            case("logo"):
+                hideAllShowOne("startPage");
+                break;
+            default:
+                hideAllShowOne();
                 break
         }
         evt.preventDefault();
@@ -322,3 +374,4 @@ function getPersonByPhone(phone) {
 
 
     import "bootstrap/dist/js/bootstrap.js"
+import data from "bootstrap/js/src/dom/data";
