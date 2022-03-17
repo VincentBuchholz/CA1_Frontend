@@ -435,10 +435,10 @@ getAllHobbies();
             case "home":
                 hideAllShowOne("startPage");
                 break;
-            case("logo"):
+            case"logo":
                 hideAllShowOne("startPage");
                 break;
-            case("api"):
+            case"api":
                 hideAllShowOne("apiPage");
                 break;
             default:
