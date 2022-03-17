@@ -415,6 +415,7 @@ getAllHobbies();
         document.getElementById("personsPage").style = "display:none"
         document.getElementById("hobbiesPage").style = "display:none"
         document.getElementById("searchPage").style = "display:none"
+        document.getElementById("apiPage").style = "display:none"
         document.getElementById(idToShow).style = "display:block"
     }
     }
@@ -436,6 +437,9 @@ getAllHobbies();
                 break;
             case("logo"):
                 hideAllShowOne("startPage");
+                break;
+            case("api"):
+                hideAllShowOne("apiPage");
                 break;
             default:
                 hideAllShowOne();

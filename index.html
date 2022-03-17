@@ -36,6 +36,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#" id="hobbies">Hobbies</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="api">API</a>
+                </li>
 
 
             </ul>
@@ -546,6 +549,352 @@
     </div>
     <!--  Search page end!!-->
 
+    <!--  API page start!!-->
+    <div id="apiPage" style="display:none;">
+        <div class="shadow-lg p-3 mb-5 bg-body rounded mt-5 ms-5 me-1">
+            <h4 class="text-center">Api documentation:</h4>
+            <p><br></p>
+            <div>
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">Method</th>
+                        <th scope="col">URL</th>
+                        <th scope="col">Request Body (JSON)</th>
+                        <th scope="col">Response (JSON)</th>
+                        <th scope="col">Error (e)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <p>GET&nbsp; &nbsp;&nbsp;</p>
+                        </td>
+                        <td>
+                            <p>/api/person/all</p>
+                        </td>
+                        <td><br></td>
+                        <td>
+                            <p>[user, user, ...](1)</p>
+                        </td>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>GET</p>
+                        </td>
+                        <td>
+                            <p>/api/person/phone/{phone}</p>
+                        </td>
+                        <td><br></td>
+                        <td>
+                            <p>user (1)</p>
+                        </td>
+                        <td>
+                            <p>e(1)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>GET</p>
+                        </td>
+                        <td>
+                            <p>/api/person/zip/{zip}/</p>
+                        </td>
+                        <td><br></td>
+                        <td>
+                            <p>CityInfo(1)</p>
+                        </td>
+                        <td>
+                            <p>e(2)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>GET</p>
+                        </td>
+                        <td>
+                            <p>/api/person/hobby/{hobbyID}</p>
+                        </td>
+                        <td><br></td>
+                        <td>
+                            <p>amount(1)</p>
+                        </td>
+                        <td>
+                            <p>e(3)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>GET</p>
+                        </td>
+                        <td>
+                            <p>/api/person/zip/all</p>
+                        </td>
+                        <td><br></td>
+                        <td>
+                            <p>[user, user, ...](1)</p>
+                        </td>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>GET</p>
+                        </td>
+                        <td>
+                            <p>/api/person/hobby/all</p>
+                        </td>
+                        <td><br></td>
+                        <td>
+                            <p>Hobby(1)</p>
+                        </td>
+                        <td><br></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>POST</p>
+                        </td>
+                        <td>
+                            <p>/api/person</p>
+                        </td>
+                        <td>
+                            <p>user(2)</p>
+                        </td>
+                        <td>
+                            <p>user(1)</p>
+                        </td>
+                        <td>
+                            <p>(e4)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>POST</p>
+                        </td>
+                        <td>
+                            <p>/api/person/addphone/{userID}</p>
+                        </td>
+                        <td>
+                            <p>phone(1)</p>
+                        </td>
+                        <td>
+                            <p>user(1)</p>
+                        </td>
+                        <td>
+                            <p>e(5)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>PUT</p>
+                        </td>
+                        <td>
+                            <p>/api/person/edit/{id}</p>
+                        </td>
+                        <td>
+                            <p>user(2)</p>
+                        </td>
+                        <td>
+                            <p>user(1)</p>
+                        </td>
+                        <td>
+                            <p>e(5)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>PUT</p>
+                        </td>
+                        <td>
+                            <p>api/person/addhobby/{personid}/{hobbyid}</p><br>
+                        </td>
+                        <td><br></td>
+                        <td>
+                            <p>user(1)</p>
+                        </td>
+                        <td>
+                            <p>e(5)</p>
+                            <p>e(6)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>PUT</p>
+                        </td>
+                        <td>
+                            <p>api/person/editaddress/{id}</p>
+                        </td>
+                        <td>
+                            <p>address(1)</p>
+                        </td>
+                        <td>
+                            <p>user(1)</p>
+                        </td>
+                        <td>
+                            <p>e(5)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>DELETE</p>
+                        </td>
+                        <td>
+                            <p>/api/person/deletephone/{id}</p>
+                        </td>
+                        <td><br></td>
+                        <td><br></td>
+                        <td>
+                            <p>e(7)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>DELETE</p>
+                        </td>
+                        <td>
+                            <p>/api/person/removehobby/{personid}/{hobbyid}</p>
+                        </td>
+                        <td><br></td>
+                        <td>
+                            <p>user(1)</p>
+                        </td>
+                        <td>
+                            <p>e(5)</p>
+                            <p>e(6)</p><br>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="shadow-lg p-3 mb-5 bg-body rounded mt-5 ms-5 me-1 p-5">
+            <h4 class="text-center">Request Body and Response Formats</h4>
+            <div class="row">
+                <div class="col shadow-lg p-3 mb-5 bg-body rounded mt-5 me-5">
+                    <h5>User(1)</h5>
+                    <p>{</p>
+                    <p>&nbsp; &nbsp; &quot;id&quot;: int,</p>
+                    <p>&nbsp; &nbsp; &quot;fName&quot;: String,</p>
+                    <p>&nbsp; &nbsp; &quot;lName&quot;: String,</p>
+                    <p>&nbsp; &nbsp; &quot;email&quot;: String,</p>
+                    <p>&nbsp; &nbsp; &quot;hobbies&quot;: [</p>
+                    <p>&nbsp; &nbsp; &nbsp; {</p>
+                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &quot;id&quot;: int,</p>
+                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &quot;name&quot;: String,</p>
+                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &quot;desc&quot;: String&quot;</p>
+                    <p>&nbsp; &nbsp; &nbsp; }</p>
+                    <p>&nbsp; &nbsp; ],</p>
+                    <p>&nbsp; &nbsp; &quot;phones&quot;: [</p>
+                    <p>&nbsp; &nbsp; &nbsp; {</p>
+                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &quot;id&quot;: int,</p>
+                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &quot;nr&quot;: String,</p>
+                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &quot;desc&quot;: String,</p>
+                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &quot;personId&quot;: int</p>
+                    <p>&nbsp; &nbsp; &nbsp; }</p>
+                    <p>&nbsp; &nbsp; ],</p>
+                    <p>&nbsp; &nbsp; &quot;address&quot;: {</p>
+                    <p>&nbsp; &nbsp; &nbsp; &quot;id&quot;: int,</p>
+                    <p>&nbsp; &nbsp; &nbsp; &quot;street&quot;: String,</p>
+                    <p>&nbsp; &nbsp; &nbsp; &quot;info&quot;: String,</p>
+                    <p>&nbsp; &nbsp; &nbsp; &quot;cityInfo&quot;: {</p>
+                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &quot;id&quot;: int,</p>
+                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &quot;zip&quot;: int,</p>
+                    <p>&nbsp; &nbsp; &nbsp; &nbsp; &quot;city&quot;: &quot;K&oslash;benhavn S&quot;</p>
+                    <p>&nbsp; &nbsp; &nbsp; }</p>
+                    <p>&nbsp; &nbsp; }</p>
+                    <p>&nbsp; }</p>
+                </div>
+                <div class="col shadow-lg p-3 mb-5 bg-body rounded mt-5 me-5">
+                    <h5>User(2)</h5>
+                    <p>{</p>
+                    <p>&nbsp;&quot;fName&quot;:&nbsp;String,</p>
+                    <p>&nbsp;&quot;lName&quot;:&nbsp;String,</p>
+                    <p>&nbsp;&quot;email&quot;:&nbsp;String,</p>
+                    <p>&nbsp;&quot;hobbies&quot;: [</p>
+                    <p>&nbsp; &nbsp;{</p>
+                    <p>&nbsp; &nbsp; &nbsp;&quot;id&quot;: int</p>
+                    <p>&nbsp; &nbsp;}</p>
+                    <p>&nbsp;],</p>
+                    <p>&nbsp;&quot;phones&quot;: [</p>
+                    <p>&nbsp; &nbsp;{</p>
+                    <p>&nbsp; &nbsp; &nbsp;&quot;nr&quot;:&nbsp;int,</p>
+                    <p>&nbsp; &nbsp; &nbsp;&quot;desc&quot;:&nbsp;String</p>
+                    <p>&nbsp; &nbsp;}</p>
+                    <p>&nbsp;],</p>
+                    <p>&nbsp;&quot;address&quot;: {</p>
+                    <p>&nbsp; &nbsp;&quot;street&quot;:&nbsp;String,</p>
+                    <p>&nbsp; &nbsp;&quot;info&quot;:&nbsp;String,</p>
+                    <p>&nbsp; &nbsp;&quot;cityInfo&quot;: {</p>
+                    <p>&nbsp; &nbsp; &nbsp;&quot;id&quot;: INT</p>
+                    <p>&nbsp; &nbsp;}</p>
+                    <p>&nbsp;}</p>
+                    <p>}</p>
+                </div>
+
+                <div class="col shadow-lg p-3 mb-5 bg-body rounded mt-5 me-5">
+                    <h5>(1)Phone</h5>
+                    <p>{</p>
+                    <p>&nbsp;&quot;phones&quot;: [</p>
+                    <p>&nbsp; &nbsp;{</p>
+                    <p>&nbsp; &nbsp; &nbsp;&quot;nr&quot;: INT,</p>
+                    <p>&nbsp; &nbsp; &nbsp;&quot;desc&quot;: String</p>
+                    <p>&nbsp; &nbsp;}</p>
+                    <p>&nbsp;]</p>
+                    <p>}</p>
+                </div>
+                <div class="col shadow-lg p-3 mb-5 bg-body rounded mt-5">
+                    <h5>(1)Address</h5>
+                    <p>{</p>
+                    <p>&nbsp;&quot;address&quot;: {</p>
+                    <p>&nbsp; &nbsp;&quot;street&quot;: String,</p>
+                    <p>&nbsp; &nbsp;&quot;info&quot;: String,</p>
+                    <p>&nbsp; &nbsp;&quot;cityInfo&quot;: {</p>
+                    <p>&nbsp; &nbsp; &nbsp;&quot;id&quot;: int</p>
+                    <p>&nbsp; &nbsp;}</p>
+                    <p>&nbsp;}</p>
+                    <p>}</p>
+                </div>
+            </div>
+        </div>
+        <div class="shadow-lg p-3 mb-5 bg-body rounded mt-5 ms-5 me-1 p-5">
+            <h4 class="text-center">Errors</h4>
+            <ul>
+                <li>
+                    <p>(e1) :{ status : 404, &quot;message&quot;: &quot;Person with provided phone number not found&quot;
+                        }</p>
+                </li>
+                <li>
+                    <p>(e2) :{ status : 404, &quot;message&quot;: &quot;Provided Zipcode not found&rdquo; }</p>
+                </li>
+                <li>
+                    <p>(e3) :&nbsp;{ status : 404, &ldquo;message&rdquo; : Hobby with provided id not found&rdquo; }</p>
+                </li>
+                <li>
+                    <p>(e4) :&nbsp;{ status: 400, &ldquo;message&rdquo; : &ldquo;Missing person values&rdquo; }</p>
+                </li>
+                <li>
+                    <p>(e4) :&nbsp;{ status: 400, &ldquo;message&rdquo; : &ldquo;Missing address values&rdquo; }</p>
+                </li>
+                <li>
+                    <p>(e4) :&nbsp;{ status: 400, &ldquo;message&rdquo; : &ldquo;Missing phone values&rdquo; }</p>
+                </li>
+                <li>
+                    <p>(e5): &nbsp;{ status: 404, &ldquo;message&rdquo; : &ldquo;Person with provided id not found&rdquo;
+                        }</p>
+                </li>
+                <li>
+                    <p>(e6): &nbsp;&nbsp;{ status: 404, &ldquo;message&rdquo; : &ldquo;Hobby with provided id not found&rdquo;
+                        }</p>
+                </li>
+                <li>
+                    <p>(e7) { status: 404, &ldquo;message&rdquo; : &ldquo;Phone with provided id not found&rdquo; }</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!--  API page end!!-->
 
 </div>
 
