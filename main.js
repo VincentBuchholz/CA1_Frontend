@@ -252,6 +252,7 @@ function getPersonByPhone(phone) {
             document.querySelector("#zip").value = `${person.address.cityInfo.zip}`;
             document.querySelector("#city").value = `${person.address.cityInfo.city}`;
             document.querySelector("#addPhoneBTN").value = person.id;
+            document.querySelector("#openGoogle").href= `https://www.google.com/maps/search/?api=1&query=${person.address.street}+${person.address.info}+${person.address.cityInfo.zip}`;
             let phoneRows = person.phones.map(phone => {
                 return `
         <tr>
