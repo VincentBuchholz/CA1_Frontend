@@ -83,22 +83,31 @@ PHONETABLE.addEventListener("click",removePhone)
 
 function addPhone() {
     let userID = document.querySelector("#addPhoneBTN").value;
-    let person = {
-    phones: [
-        {
-            nr: document.querySelector("#addPhoneNr").value,
-            desc: document.querySelector("#addPhoneDesc").value
+    let number= document.querySelector("#addPhoneNr").value;
+    let desc = document.querySelector("#addPhoneDesc").value;
+    if(number && desc) {
+        let person = {
+            phones: [
+                {
+                    nr: number,
+                    desc: desc
+                }
+            ]
         }
-    ]
+        personsFacade.addPhone(userID, person).then(user => {
+            const phoneSuccessAlert = document.querySelector("#phoneSuccess");
+            phoneSuccessAlert.style="display";
+            number=null;
+            desc=null;
+        }).catch(err => {
+            if (err.status) {
+                err.fullError.then(e => console.log(e.msg))
+            } else {
+                console.log("Network error");
+            }
+        })
+        setTimeout(updatAfterEdit, 300)
     }
-    personsFacade.addPhone(userID,person).then(user => console.log(user)).catch(err => {
-        if (err.status) {
-            err.fullError.then(e => console.log(e.msg))
-        } else {
-            console.log("Network error");
-        }
-    })
-    setTimeout(updatAfterEdit,300)
 }
 function removePhone(e){
     const target = e.target;
@@ -183,8 +192,7 @@ CREATEPERSONBTN.addEventListener("click", createPerson)
 const CLOSEMODALBTN = document.querySelector("#closeModalBTN");
 CLOSEMODALBTN.addEventListener("click",getPersons);
 
-function createPerson(e) {
-    e.preventDefault()
+function createPerson() {
     let person = {
         fName: document.querySelector("#createfName").value,
         lName: document.querySelector("#createlName").value,
@@ -209,25 +217,25 @@ function createPerson(e) {
             }
         }
     }
-    personsFacade.createPerson(person).then(user => console.log(user)).catch(err => {
+    personsFacade.createPerson(person).then(user => {
+        const personSuccessAlert = document.querySelector("#createPersonSuccess");
+        personSuccessAlert.style="display";
+        document.querySelector("#createfName").value=null
+        document.querySelector("#createlName").value=null
+        document.querySelector("#createEmail").value=null
+        document.querySelector("#selectHobby").value=0
+        document.querySelector("#createPhoneNr").value=null
+        document.querySelector("#createPhoneDesc").value=null
+        document.querySelector("#createStreet").value=null
+        document.querySelector("#createHouseNr").value=null
+        document.querySelector("#selectZip").value=0
+    }).catch(err => {
         if (err.status) {
             err.fullError.then(e => console.log(e.message))
         } else {
             console.log("Network error");
         }
     })
-    const personSuccessAlert = document.querySelector("#createPersonSuccess");
-    personSuccessAlert.style="display";
-    document.querySelector("#createfName").value=null
-    document.querySelector("#createlName").value=null
-    document.querySelector("#createEmail").value=null
-    document.querySelector("#selectHobby").value=0
-    document.querySelector("#createPhoneNr").value=null
-    document.querySelector("#createPhoneDesc").value=null
-    document.querySelector("#createStreet").value=null
-    document.querySelector("#createHouseNr").value=null
-    document.querySelector("#selectZip").value=0
-
     setTimeout(getPersons,1000)
 
 }
@@ -313,6 +321,8 @@ function getPersonByPhone(phone) {
                     console.log("Network error");
                 }
             })
+            const editSuccessAlert = document.querySelector("#editSuccess");
+            editSuccessAlert.style="display";
 
             setTimeout(updatAfterEdit,1000)
 

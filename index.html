@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Ca 1</title>
-    <link rel="icon" type="image" href="logo.png" />
+    <link rel="icon" type="image" href="logo.png"/>
 </head>
 <body>
 
@@ -230,8 +230,8 @@
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                                         id="closeModalBTN">Close
                                 </button>
-                                <button type="submit" class="btn btn-primary" id="createPersonBTN">Save changes
-                                </button>
+                                <input type="submit" class="btn btn-primary" id="createPersonBTN" value="Save changes">
+
 
                             </div>
                         </form>
@@ -356,15 +356,21 @@
                     </div>
                 </div>
             </div>
-            <div class="text-end">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary rounded" data-bs-toggle="modal"
-                    data-bs-target="#editPersonModal">
-                Edit
-            </button>
+            <div class="row">
+                <div class="col">
+                    <a id="openGoogle" class="btn btn-success" href="https://www.google.com" target="_blank">Open in
+                        Google maps</a>
+                </div>
+
+                <div class="col text-end">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-primary rounded" data-bs-toggle="modal"
+                            data-bs-target="#editPersonModal">
+                        Edit
+                    </button>
+                </div>
             </div>
         </form>
-        <a id="openGoogle" class="btn btn-success" href="https://www.google.com" target="_blank">Open in Google maps</a>
 
         <!-- Modal -->
         <div class="modal fade" id="editPersonModal" tabindex="-1" aria-labelledby="editPersonModal" aria-hidden="true">
@@ -373,6 +379,9 @@
                     <div class="modal-header">
                         <h5 class="modal-title">Edit Information</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="alert alert-success m-2" id="editSuccess" style="display: none;">
+                        <strong>Success!</strong> Person has been updated!
                     </div>
                     <div class="modal-body">
                         <h4>Personal information*</h4>
@@ -447,35 +456,40 @@
                      aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Add phone</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-
-                                <div class="row mb-4">
-                                    <div class="col">
-                                        <div class="form-outline mb-4">
-                                            <input type="text" id="addPhoneNr" placeholder="Number"
-                                                   class="form-control"/>
-                                        </div>
-                                    </div>
-                                    <div class="col">
-                                        <div class="form-outline mb-4">
-                                            <input type="text" id="addPhoneDesc" placeholder="Description"
-                                                   class="form-control"/>
-                                        </div>
-                                    </div>
+                            <form>
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Add phone</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                 </div>
+                                <div class="alert alert-success m-2" id="phoneSuccess" style="display: none;">
+                                    <strong>Success!</strong> Phone has been added!
+                                </div>
+                                <div class="modal-body">
 
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                        id="closeAddPhoneModalBTN">Close
-                                </button>
-                                <button type="button" class="btn btn-primary" id="addPhoneBTN">Save changes</button>
-                            </div>
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <div class="form-outline mb-4">
+                                                <input type="text" id="addPhoneNr" placeholder="Number"
+                                                       class="form-control" required/>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-outline mb-4">
+                                                <input type="text" id="addPhoneDesc" placeholder="Description"
+                                                       class="form-control" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                            id="closeAddPhoneModalBTN">Close
+                                    </button>
+                                    <button type="submit" class="btn btn-primary" id="addPhoneBTN">Save changes</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
