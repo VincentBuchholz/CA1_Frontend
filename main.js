@@ -410,13 +410,21 @@ getAllHobbies();
 
     function hideAllShowOne(idToShow) {
     if(idToShow) {
-        document.getElementById("startPage").style = "display:none"
-        document.getElementById("citiesPage").style = "display:none"
-        document.getElementById("personsPage").style = "display:none"
-        document.getElementById("hobbiesPage").style = "display:none"
-        document.getElementById("searchPage").style = "display:none"
-        document.getElementById("apiPage").style = "display:none"
+        document.getElementById("startPage").style="display:none;"
+        document.getElementById("citiesPage").style="display:none;"
+        document.getElementById("personsPage").style="display:none;"
+        document.getElementById("hobbiesPage").style="display:none;"
+        document.getElementById("searchPage").style="display:none;"
+        document.getElementById("apiPage").style="display:none;"
+        document.querySelector("#home").classList.remove("active");
+        document.querySelector("#cities").classList.remove("active");
+        document.querySelector("#persons").classList.remove("active");
+        document.querySelector("#hobbies").classList.remove("active");
+        document.querySelector("#api").classList.remove("active");
         document.getElementById(idToShow).style = "display:block"
+        if(idToShow === "startPage"){
+            document.querySelector("#home").classList.add("active")
+        }
     }
     }
 
@@ -425,21 +433,27 @@ getAllHobbies();
         switch (id) {
             case "cities":
                 hideAllShowOne("citiesPage");
+                document.querySelector("#cities").classList.add("active")
                 break
             case "persons":
                 hideAllShowOne("personsPage");
+                document.querySelector("#persons").classList.add("active")
                 break
             case "hobbies":
                 hideAllShowOne("hobbiesPage");
+                document.querySelector("#hobbies").classList.add("active")
                 break
             case "home":
                 hideAllShowOne("startPage");
+                document.querySelector("#home").classList.add("active")
                 break;
             case"logo":
                 hideAllShowOne("startPage");
+                document.querySelector("#home").classList.add("active")
                 break;
             case"api":
                 hideAllShowOne("apiPage");
+                document.querySelector("#api").classList.add("active")
                 break;
             default:
                 hideAllShowOne();
