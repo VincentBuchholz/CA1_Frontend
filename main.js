@@ -332,7 +332,21 @@ function getPersonByPhone(phone) {
             `
             });
             document.querySelector("#hobby").innerHTML = hobbyRows.join("");
-        });
+            hideAllShowOne("searchPage");
+        }).catch(err => {
+        if (err.status) {
+            err.fullError.then(e => {
+                 document.querySelector("#phoneNotFoundMsg").innerText = e.message;
+                 document.querySelector("#phoneNotFound").style ="display:block;"
+
+                setTimeout(function () {
+                    document.querySelector("#phoneNotFound").style = "display:none"
+                }, 3000)
+            })
+        } else {
+            console.log("Network error");
+        }
+    })
     }
 
 function updatAfterEdit(){
@@ -406,9 +420,6 @@ getAllHobbies();
                 break
             case "hobbies":
                 hideAllShowOne("hobbiesPage");
-                break
-            case "searchBTN":
-                hideAllShowOne("searchPage");
                 break
             case "home":
                 hideAllShowOne("startPage");
