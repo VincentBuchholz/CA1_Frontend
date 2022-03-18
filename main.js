@@ -76,7 +76,13 @@ function getPersons() {
     });
 }
 const ADDPHONEBTN = document.querySelector("#addPhoneBTN");
+const openAddPhoneModalBTN = document.querySelector("#openAddPhoneModalBTN");
 ADDPHONEBTN.addEventListener("click",addPhone);
+
+openAddPhoneModalBTN.addEventListener("click",function(){document.querySelector("#phoneSuccess").style="display:none;"});
+
+
+
 
 const PHONETABLE = document.querySelector("#phones")
 PHONETABLE.addEventListener("click",removePhone)
@@ -186,7 +192,10 @@ hobbiesFacade.getHobbies().then(hobbies => {
 });
 
 const CREATEPERSONBTN = document.querySelector("#createPersonBTN")
+const CREATEPERSONMODALBTN = document.querySelector("#createPersonModalBTN")
+
 CREATEPERSONBTN.addEventListener("click", createPerson)
+CREATEPERSONMODALBTN.addEventListener("click", function (){document.querySelector("#createPersonSuccess").style="display:none;"})
 
 const CLOSEMODALBTN = document.querySelector("#closeModalBTN");
 CLOSEMODALBTN.addEventListener("click",getPersons);
