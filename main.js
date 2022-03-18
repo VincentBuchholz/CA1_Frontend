@@ -95,10 +95,9 @@ function addPhone() {
             ]
         }
         personsFacade.addPhone(userID, person).then(user => {
-            const phoneSuccessAlert = document.querySelector("#phoneSuccess");
-            phoneSuccessAlert.style="display";
-            number=null;
-            desc=null;
+            document.querySelector("#phoneSuccess").style="display:block;"
+            document.querySelector("#addPhoneNr").value = null;
+            document.querySelector("#addPhoneDesc").value = null;
         }).catch(err => {
             if (err.status) {
                 err.fullError.then(e => console.log(e.msg))
